@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); sid=$(echo \"$input\" | jq -r '.session_id // empty'); f=$(echo \"$input\" | jq -r '.tool_input.file_path // empty'); [ -n \"$f\" ] && [ -n \"$sid\" ] && [ -e \"$f\" ] && case \"$f\" in *.png|*.jpg|*.jpeg|*.gif|*.webp|*.pdf|*.svg|*.md|*.txt|*.html|*.docx|*.env|*/.env|*/.env.*|*/.*/*) echo \"$f\" >> \"/tmp/claude-pending-opens-$sid.txt\" ;; esac 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sid=$(jq -r '.session_id // empty'); f=\"/tmp/claude-pending-opens-$sid.txt\"; [ -n \"$sid\" ] && [ -f \"$f\" ] && awk '!seen[$0]++' \"$f\" | while read -r p; do [ -e \"$p\" ] && open \"$p\"; done; rm -f \"$f\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

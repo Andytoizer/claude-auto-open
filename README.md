@@ -29,7 +29,7 @@ Code files (`.py`, `.ts`, `.json`, etc.) don't open — you're editing those in 
 ## Install (macOS)
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/claude-auto-open.git
+git clone https://github.com/Andytoizer/claude-auto-open.git
 cd claude-auto-open
 ./install.sh
 ```

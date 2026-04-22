@@ -1,6 +1,6 @@
 # claude-auto-open
 
-Built by Andy Toizer — I write [**AgentOperator**](https://agentoperator.substack.com), a newsletter about building with AI agents in real workflows.
+Built by Andy Toizer — Head of Growth at Freckle and author of the [**AgentOperator**](https://agentoperator.substack.com) newsletter, where I write about building real things with Claude Code agents instead of talking about the future tense of "AI at work."
 
 **TLDR:** When Claude Code writes a file you're supposed to look at — a `.env`, a draft, an image, anything in a hidden folder — this opens it for you automatically, once the turn finishes. No more digging through terminal output to find the path.
 
